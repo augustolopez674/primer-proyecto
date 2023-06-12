@@ -8,5 +8,20 @@
 </head>
 <body>
     <h1>Este es el primer template que creé</h1>
+
+    <><p>{{mensaje}}</p>
+    {% if segundo_redondo %}
+    <p style="color:yellow;">{{segundos}}</p> 
+    {% elif segundo_par %}
+    <p style="color:red;">{{segundos}}</p>
+    {% else %}
+    <p style="color:green;">{{segundos}}</p>
+
+    {% endif %}
+    
+    {% for numero in listado_de_numeros %}
+    <p>{{numero}}</p>
+    {% endfor %}
+
 </body>
 </html>
