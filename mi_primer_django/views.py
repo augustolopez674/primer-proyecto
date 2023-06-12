@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from datetime import datetime
 from django.template import Template, Context, loader
+from inicio.models import Perro
 
 #v1
 # def inicio(request):
@@ -65,3 +66,14 @@ def saludar(request):
 
 def bienvenida(request, nombre, apellido):
     return HttpResponse(f'Bienvenido/a {nombre.title()} {apellido.title()}')
+
+def crear_perro(request, nombre, edad):
+    template = loader.get_template('crear_perro.html')
+    perro = Perro(nombre=nombre, edad=edad)
+    perro.save()
+    diccionario = {
+        'perro': perro,
+    }
+    renderizar_template = Template.render(diccionario)
+    
+    return HttpResponse(renderizar_template)
